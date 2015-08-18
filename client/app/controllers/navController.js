@@ -7,20 +7,24 @@ angular.module('app.nav', [])
       if (data.logged_in) {
         $window.user = data.user;
         $window.user.logged_in = data.logged_in;
-        $scope.loggedin = true;
+        $scope.$apply(function() {
+          $scope.loggedin = true;
+        });
       } else {
         $window.user = undefined;
-        $scope.loggedin = false;
+        $scope.$apply(function() {
+          $scope.loggedin = false;
+        });
       }
     });
 
-    $scope.loadVideo = function(){
-      console.log("TEST inside loadVideo");
+    $scope.loadVideo = function() {
+        console.log("TEST inside loadVideo");
 
-      var videoData = $window.player.getVideoData();  
-      if(videoData !== undefined){
-        $location.path('/video/' + videoData.video_id);
-      } //if
+        var videoData = $window.player.getVideoData();
+        if (videoData !== undefined) {
+          $location.path('/video/' + videoData.video_id);
+        } //if
 
-    } //loadVideo()
+      } //loadVideo()
   }); //navController
