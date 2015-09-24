@@ -28,8 +28,8 @@ angular.module('app.video', [])
       // comment graph setup
       commentGraph.graph(videoData.video);
       $(window).on('resize', commentGraph.resize.bind(null, videoData.video));
-      commentGraph.hide();
-      commentGraph.clicked(videoData.video, function(item){
+      // commentGraph.hide();
+      commentGraph.clicked(videoData.video, function(item) {
         // console.log('time='+item);
         $window.player.seekTo(item);
 
@@ -37,7 +37,7 @@ angular.module('app.video', [])
       // var timer = commentGraph.timer(videoData.video);
       // var t = timer.timer();
       // console.log('=====================',timer)
-      
+
       // setTimeout(timer.stop.bind(timer), 1000);
     });
 
@@ -113,12 +113,12 @@ angular.module('app.video', [])
         commentGraph.graph(videoData.video);
         $(window).on('resize', commentGraph.resize.bind(null, $scope.comments));
         // commentGraph.hide();
-        commentGraph.clicked(videoData.video, function(item){
+        commentGraph.clicked(videoData.video, function(item) {
           // console.log('time='+item);
           $window.player.seekTo(item);
         });
       });
-      
+
       $window.commentInit = true;
     } //if(!commentInit)
 
@@ -132,14 +132,18 @@ angular.module('app.video', [])
       console.log("TEST1 ----> run once");
       var player = $window.player;
 
-      if(player !== undefined){
+      if (player !== undefined) {
         // console.log('TEST1 ---> getVideoData works');
         var existingVideo = player.getVideoData(); //get video information {video_id, author, title}
-      }else{
+      } else {
         // console.log('TEST1 ---> getVideoData not work');
-        existingVideo = {video_id: videoId, author: "", title: ""};
+        existingVideo = {
+          video_id: videoId,
+          author: "",
+          title: ""
+        };
       } //if()
-      
+
       console.log("TEST1 --------------> existingVideo=", existingVideo);
 
       //note: only load video if it is new
@@ -152,7 +156,7 @@ angular.module('app.video', [])
 
       } //if(existingVideoId !== videoId)
 
-      
+
       //func: detect state change of video
       // -> 1st load new video: emit cs-videoLoad via SocketIO
       // -> Pause and play at new location: clear commentScroller
@@ -203,8 +207,8 @@ angular.module('app.video', [])
 
         $window.videoInit = true;
       } //if(!window.videoInit)
-    }, function(){
-      return $window.homepageLoaded ? 0:2000; 
+    }, function() {
+      return $window.homepageLoaded ? 0 : 2000;
     }()); //$timeout: 
 
   }).factory('commentService', function($timeout, $window) { //

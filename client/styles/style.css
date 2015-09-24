@@ -134,12 +134,8 @@
   padding: 0px;
   margin:0 auto;
   text-align: center;
+  top: -35px;
 
-  top: -20px;
-  
-  /*top:535px;*/
-  /*left:12px;*/
->>>>>>> (commentGraph) finialized
 }
 
 .chart div {
