@@ -1,9 +1,9 @@
 {
   "name": "VideoCloud",
   "version": "0.0.1",
-  "homepage": "https://github.com/johndrkurtcom/Video-Cloud",
+  "homepage": "https://github.com/Gattereier/Video-Cloud",
   "authors": [
-    "John Payton"
+    ""
   ],
   "main": "lib",
   "moduleType": [
